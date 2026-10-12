@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Từ Thiện Vì Cộng Đồng - Lan Tỏa Yêu Thương & Bảo Vệ Môi Trường</title>
+   
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        eco: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'glow': '0 0 25px -5px rgba(34, 197, 94, 0.4)',
+                        'glow-lg': '0 0 40px -10px rgba(34, 197, 94, 0.5)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-pattern {
+            background-color: #14532d;
+            background-image: radial-gradient(#22c55e 1.2px, transparent 1.2px), radial-gradient(#22c55e 1.2px, #14532d 1.2px);
+            background-size: 48px 48px;
+            background-position: 0 0, 24px 24px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #16a34a;
+            border-radius: 10px;
+        }
+
+        .qr-hover-zoom {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .qr-hover-zoom:hover {
+            transform: scale(1.04);
+        }
+
+        .nav-link.active {
+            color: #16a34a !important;
+            font-weight: 700 !important;
+            border-bottom: 2px solid #16a34a !important;
+        }
+
+        @keyframes toast-slide-in {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .animate-toast {
+            animation: toast-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-eco-50 text-gray-800 font-sans antialiased min-h-screen relative overflow-x-hidden selection:bg-eco-500 selection:text-white">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed top-24 right-5 z-[100] space-y-3 pointer-events-auto"></div>
+
+    <!-- HEADER / NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-eco-100 transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+               
+                <!-- Brand Logo -->
+                <a href="#trang-chu" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 bg-gradient-to-tr from-eco-700 to-eco-500 rounded-2xl flex items-center justify-center text-white shadow-md group-hover:scale-105 transition duration-300">
+                        <i class="fa-solid fa-seedling text-2xl animate-pulse"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-extrabold text-eco-900 tracking-tight block">Từ Thiện Vì Cộng Đồng</span>
+                        <p class="text-xs text-eco-600 font-semibold tracking-wide">Lan tỏa yêu thương • Bảo vệ hành tinh</p>
+                    </div>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-5 text-sm">
+                    <a href="#trang-chu" id="nav-trang-chu" class="nav-link font-semibold text-eco-800 hover:text-eco-600 transition flex items-center gap-1.5 py-2 border-b-2 border-eco-600">
+                        <i class="fa-solid fa-house text-eco-600"></i> Trang Chủ
+                    </a>
+                    <a href="#cau-chuyen" id="nav-cau-chuyen" class="nav-link font-medium text-gray-600 hover:text-eco-600 transition flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-book-open text-amber-600"></i> Câu Chuyện Chiều Sâu
+                    </a>
+                    <a href="#dong-gop" id="nav-dong-gop" class="nav-link font-medium text-gray-600 hover:text-eco-600 transition flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-hand-holding-heart text-red-500"></i> Các Quỹ Ủng Hộ
+                    </a>
+                    <a href="#thu-vien-anh" id="nav-thu-vien-anh" class="nav-link font-medium text-gray-600 hover:text-eco-600 transition flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-images text-eco-600"></i> Hình Ảnh Thực Tế
+                    </a>
+                    <a href="#dan-chung" id="nav-dan-chung" class="nav-link font-medium text-gray-600 hover:text-eco-600 transition flex items-center gap-1.5 py-2">
+                        <i class="fa-solid fa-award text-amber-500"></i> Bảng Vàng Ân Nhân
+                    </a>
+                </nav>
+
+                <!-- User Actions -->
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <div class="relative">
+                        <button id="notif-btn" onclick="toggleNotifDrawer()" class="relative p-2.5 bg-eco-100/80 hover:bg-eco-200 text-eco-800 rounded-2xl transition duration-200 focus:outline-none flex items-center justify-center">
+                            <i class="fa-solid fa-bell text-xl"></i>
+                            <span id="notif-badge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">0</span>
+                        </button>
+
+                        <div id="notif-drawer" class="hidden absolute right-0 mt-3 w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-gray-100 z-50 overflow-hidden transform origin-top-right transition-all">
+                            <div class="p-4 bg-gradient-to-r from-eco-800 to-eco-700 text-white flex justify-between items-center">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-bell text-amber-300"></i>
+                                    <h4 class="font-bold text-sm">Thông Báo Hoạt Động</h4>
+                                </div>
+                                <button onclick="markAllNotificationsRead()" class="text-xs bg-white/20 hover:bg-white/30 text-white px-2.5 py-1 rounded-lg transition">Đã đọc</button>
+                            </div>
+                            <div id="notif-list" class="max-h-80 overflow-y-auto custom-scrollbar divide-y divide-gray-100"></div>
+                            <div class="p-3 text-center bg-gray-50 border-t border-gray-100">
+                                <span class="text-xs text-gray-500">CÔNG TY TNHH QUỸ THƯƠNG TÂM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="auth-header-container"></div>
+
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden text-gray-700 hover:text-eco-600 focus:outline-none p-2.5 rounded-2xl bg-gray-100">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-4 pt-3 pb-6 space-y-2 shadow-lg">
+            <a href="#trang-chu" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-medium text-eco-800 bg-eco-50"><i class="fa-solid fa-house mr-2 text-eco-600"></i>Trang Chủ</a>
+            <a href="#cau-chuyen" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-medium text-gray-700 hover:bg-eco-50"><i class="fa-solid fa-book-open mr-2 text-amber-600"></i>Câu Chuyện Chiều Sâu</a>
+            <a href="#dong-gop" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-medium text-gray-700 hover:bg-eco-50"><i class="fa-solid fa-hand-holding-heart mr-2 text-red-500"></i>Các Quỹ Ủng Hộ</a>
+            <a href="#thu-vien-anh" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-medium text-gray-700 hover:bg-eco-50"><i class="fa-solid fa-images mr-2 text-eco-600"></i>Hình Ảnh Thực Tế</a>
+            <a href="#dan-chung" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-medium text-gray-700 hover:bg-eco-50"><i class="fa-solid fa-award mr-2 text-amber-500"></i>Bảng Vàng Ân Nhân</a>
+            <a href="tel:0342929539" class="block px-3 py-2.5 rounded-xl font-bold text-white bg-red-500 text-center shadow-sm"><i class="fa-solid fa-phone-volume mr-2"></i>Khẩn Cấp: 0342929539</a>
+        </div>
+    </header>
+
+    <!-- MAIN APP WRAPPER -->
+    <div id="main-app-wrapper" class="transition-all duration-500 flex flex-col min-h-screen">
+        <main class="flex-grow">
+           
+            <!-- SECTION 1: HERO SECTION -->
+            <section id="trang-chu" class="hero-pattern text-white py-20 sm:py-32 relative overflow-hidden">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center max-w-4xl mx-auto space-y-6">
+                        <span class="inline-flex items-center gap-2 bg-eco-500/30 backdrop-blur-md text-eco-200 px-5 py-2 rounded-full text-xs sm:text-sm font-bold tracking-wider border border-eco-400/30 animate-pulse">
+                            <i class="fa-solid fa-seedling text-eco-300"></i> MINH BẠCH 100% • CHUYỂN TIỀN TRỰC TIẾP TỚI TẬN TAY NGƯỜI CẦN
+                        </span>
+                        <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-tight">
+                            Mỗi Hạt Giống Gieo Xuống <br class="hidden sm:inline"/>Là Một <span class="text-transparent bg-clip-text bg-gradient-to-r from-eco-200 via-eco-300 to-green-300">Mầm Sống Được Hồi Sinh</span>
+                        </h1>
+                        <p class="text-base sm:text-xl text-eco-100 font-light leading-relaxed max-w-3xl mx-auto">
+                            Chúng tôi tin rằng sự tử tế không cần phải lớn lao, nó bắt đầu từ việc thấu hiểu nỗi đau của người khác và hành động ngay lập tức để đem lại nụ cười cho trẻ em vùng cao và một hành tinh xanh bền vững.
+                        </p>
+
+                        <div class="pt-6 flex flex-wrap justify-center items-center gap-4">
+                            <a href="#dong-gop" class="bg-gradient-to-r from-eco-500 to-eco-600 hover:from-eco-600 hover:to-eco-700 text-white font-extrabold px-8 py-4 rounded-2xl shadow-glow transition duration-300 flex items-center gap-2 text-base transform hover:-translate-y-0.5">
+                                <i class="fa-solid fa-heart text-red-300"></i> Đóng Góp Ngay Qua VietQR
+                            </a>
+                            <a href="#cau-chuyen" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-2xl backdrop-blur-md border border-white/20 transition duration-300 flex items-center gap-2 text-base">
+                                <i class="fa-solid fa-book-open"></i> Đọc Câu Chuyện Ý Nghĩa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMPACT METRICS COUNTER BAR -->
+                <div class="max-w-6xl mx-auto px-4 mt-16 relative z-10">
+                    <div class="bg-eco-900/90 backdrop-blur-xl border border-eco-700/60 rounded-3xl p-6 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center shadow-2xl">
+                        <div>
+                            <span class="text-2xl sm:text-4xl font-black text-eco-300 block">4.5+ Tỷ VNĐ</span>
+                            <span class="text-xs text-eco-200 uppercase font-semibold tracking-wider mt-1 block">Tổng Quỹ Huy Động</span>
+                        </div>
+                        <div>
+                            <span class="text-2xl sm:text-4xl font-black text-amber-400 block">12.500+</span>
+                            <span class="text-xs text-eco-200 uppercase font-semibold tracking-wider mt-1 block">Trẻ Em Được Giúp Đỡ</span>
+                        </div>
+                        <div>
+                            <span class="text-2xl sm:text-4xl font-black text-eco-300 block">150.000+</span>
+                            <span class="text-xs text-eco-200 uppercase font-semibold tracking-wider mt-1 block">Cây Xanh Đã Trồng</span>
+                        </div>
+                        <div>
+                            <span class="text-2xl sm:text-4xl font-black text-white block">100%</span>
+                            <span class="text-xs text-eco-200 uppercase font-semibold tracking-wider mt-1 block">Minh Bạch Sao Kê</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+                    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-10 text-eco-50 fill-current">
+                        <path d="M0,0 C150,90 350,-40 500,45 C650,120 900,10 1200,40 L1200,120 L0,120 Z"></path>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- SECTION 2: CÂU CHUYỆN CHIỀU SÂU & TRIẾT LÝ HOẠT ĐỘNG -->
+            <section id="cau-chuyen" class="py-20 bg-eco-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-amber-700 font-bold uppercase tracking-wider text-xs sm:text-sm bg-amber-100 px-4 py-1.5 rounded-full"><i class="fa-solid fa-quote-left mr-1"></i> Góc Nhìn Từ Trái Tim</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-eco-950 tracking-tight mt-3">Vì Sao Chúng Tôi Lựa Chọn Con Đường Này?</h2>
+                    <div class="w-24 h-1.5 bg-amber-500 mx-auto mt-3 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 text-gray-700 leading-relaxed text-base sm:text-lg">
+                        <p class="font-medium text-eco-900 border-l-4 border-eco-600 pl-4 bg-eco-100/50 py-2 rounded-r-xl">
+                            "Giữa bộn bề cuộc sống, đôi khi chúng ta quên mất rằng ở những vùng sâu vùng xa, có những em nhỏ đến trường với cái bụng đói rỗng và đôi chân trần trong giá lạnh."
+                        </p>
+                        <p>
+                            Quỹ <strong>Từ Thiện Vì Cộng Đồng</strong> ra đời không phải vì những dự án vĩ mô trên giấy, mà xuất phát từ những khoảnh khắc nghẹn ngào khi chứng kiến cảnh trường học tạm bợ sập sệ sau mùa bão lũ, hay những đồi trọc cằn cỗi nơi miền Trung nắng gió.
+                        </p>
+                        <p>
+                            Chúng tôi cam kết đóng vai trò là chiếc cầu nối trung thực tuyệt đối. Mỗi đồng tiền quý giá của các mạnh thường quân gửi về tài khoản BIDV đều được mã hóa giao dịch tự động và giải ngân công khai minh bạch. Không có khoản phí hành chính nào bị giữ lại, bởi vì lòng tin của bạn là tài sản thiêng liêng nhất của chúng tôi.
+                        </p>
+                        <div class="pt-4 flex items-center gap-4">
+                            <div class="w-12 h-12 bg-eco-700 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                                <i class="fa-solid fa-signature"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Ban Quản Lý Quỹ</h4>
+                                <p class="text-xs text-gray-500">CÔNG TY TNHH QUỸ THƯƠNG TÂM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-eco-600 to-amber-500 rounded-3xl blur-lg opacity-30 group-hover:opacity-50 transition duration-500"></div>
+                        <div class="relative bg-white p-4 sm:p-6 rounded-3xl shadow-xl border border-eco-100 space-y-4">
+                            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="Hành trình từ thiện" class="w-full h-72 object-cover rounded-2xl shadow-md">
+                            <div class="bg-eco-50 p-4 rounded-2xl border border-eco-200">
+                                <h5 class="font-bold text-eco-900 text-sm mb-1"><i class="fa-solid fa-shield-halved text-eco-600 mr-1.5"></i> Cam Kết 4 Trụ Cột Minh Bạch:</h5>
+                                <ul class="text-xs text-gray-600 space-y-1.5 mt-2 list-disc list-inside">
+                                    <li>Sao kê tự động realtime từ ngân hàng BIDV.</li>
+                                    <li>100% tiền tài trợ đến tay đúng đối tượng cần giúp.</li>
+                                    <li>Hình ảnh giải ngân công khai và cập nhật liên tục.</li>
+                                    <li>Bảo mật tuyệt đối thông tin nhà hảo tâm.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: CÁC MỤC ĐÓNG GÓP -->
+            <section id="dong-gop" class="py-20 bg-white border-t border-eco-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-eco-600 font-bold uppercase tracking-wider text-xs sm:text-sm bg-eco-100 px-4 py-1.5 rounded-full">Trao Gửi Yêu Thương</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-eco-950 tracking-tight mt-3">Chọn Quỹ Hướng Tới Sự Sống & Tương Lai</h2>
+                        <div class="w-20 h-1.5 bg-eco-500 mx-auto mt-3 rounded-full"></div>
+                        <p class="text-gray-600 mt-4 text-base">
+                            Quý nhà tài trợ có thể <strong>Click trực tiếp vào mã QR Code</strong> để phóng to sắc nét và quét chuyển khoản dễ dàng qua hệ thống VietQR BIDV.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Quỹ 1 -->
+                        <div class="bg-eco-50/70 rounded-3xl border border-eco-200 overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+                            <div class="p-6 sm:p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-eco-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition duration-300">
+                                        <i class="fa-solid fa-tree"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-extrabold text-eco-950">Quỹ Từ Thiện Cây Xanh</h3>
+                                        <span class="text-xs font-semibold text-eco-700 bg-eco-100 px-3 py-1 rounded-full border border-eco-200">Trồng Rừng & Phủ Xanh</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                    Tài trợ giống cây rừng, phủ xanh đồi trọc, cải thiện thảm thực vật tại các tỉnh Tây Nguyên và miền Trung nhằm phòng chống sạt lở.
+                                </p>
+                                <div class="bg-white p-3.5 rounded-2xl border border-eco-200 mb-6 text-center">
+                                    <span class="text-xs font-bold text-gray-500 block uppercase">Số tiền nhận được</span>
+                                    <span id="fund-total-1" class="text-2xl font-black text-eco-700 tracking-tight">400.000.000 VNĐ</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-2xl border border-eco-100 shadow-sm flex flex-col items-center">
+                                    <div class="relative cursor-pointer group/qr qr-hover-zoom mb-2" onclick="zoomQR('Quỹ Từ Thiện Cây Xanh', 'Phủ Xanh Đồi Trọc', 500000, 'Quy Tu Thien Cay Xanh')">
+                                        <img src="https://img.vietqr.io/image/970418-8860300056-compact2.png?amount=500000&addInfo=Quy%20Tu%20Thien%20Cay%20Xanh&accountName=C%C3%94NG%20TY%20TNHH%20QU%E1%BB%B8%20TH%C6%AF%E1%BB%A2NG%20T%C3%82M" alt="QR Quỹ Cây Xanh" class="w-48 h-48 object-contain rounded-xl border border-gray-200 p-1 bg-white">
+                                        <div class="absolute inset-0 bg-eco-950/70 rounded-xl opacity-0 group-hover/qr:opacity-100 transition duration-200 flex flex-col items-center justify-center text-white text-xs font-bold gap-1 pointer-events-none">
+                                            <i class="fa-solid fa-magnifying-glass-plus text-2xl animate-bounce"></i>
+                                            <span>CLICK PHÓNG TO QR</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-[11px] font-semibold text-gray-500">BIDV: <span class="font-mono font-bold text-gray-800">8860300056</span></p>
+                                </div>
+                            </div>
+                            <div class="px-6 py-4 bg-eco-100/60 border-t border-eco-200">
+                                <button onclick="zoomQR('Quỹ Từ Thiện Cây Xanh', 'Phủ Xanh Đồi Trọc', 500000, 'Quy Tu Thien Cay Xanh')" class="w-full bg-eco-600 hover:bg-eco-700 text-white font-bold py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-expand"></i> Phóng To Mã QR Quyên Góp
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Quỹ 2 -->
+                        <div class="bg-eco-50/70 rounded-3xl border border-eco-200 overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group">
+                            <div class="p-6 sm:p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-eco-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition duration-300">
+                                        <i class="fa-solid fa-wind"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-extrabold text-eco-950">Quỹ Từ Thiện Không Khí</h3>
+                                        <span class="text-xs font-semibold text-eco-700 bg-eco-100 px-3 py-1 rounded-full border border-eco-200">Xử Lý Khí Thải & Rác Bụi</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                    Lắp đặt các trạm lọc không khí công cộng, thu gom xử lý rác thải nhựa đại dương và giảm ô nhiễm môi trường sống đô thị.
+                                </p>
+                                <div class="bg-white p-3.5 rounded-2xl border border-eco-200 mb-6 text-center">
+                                    <span class="text-xs font-bold text-gray-500 block uppercase">Số tiền nhận được</span>
+                                    <span id="fund-total-2" class="text-2xl font-black text-eco-700 tracking-tight">600.000.000 VNĐ</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-2xl border border-eco-100 shadow-sm flex flex-col items-center">
+                                    <div class="relative cursor-pointer group/qr qr-hover-zoom mb-2" onclick="zoomQR('Quỹ Từ Thiện Không Khí', 'Loc Khong Khi Cong Cong', 500000, 'Quy Tu Thien Khong Khi')">
+                                        <img src="https://img.vietqr.io/image/970418-8860300056-compact2.png?amount=500000&addInfo=Quy%20Tu%20Thien%20Khong%20Khi&accountName=C%C3%94NG%20TY%20TNHH%20QU%E1%BB%B8%20TH%C6%AF%E1%BB%A2NG%20T%C3%82M" alt="QR Quỹ Không Khí" class="w-48 h-48 object-contain rounded-xl border border-gray-200 p-1 bg-white">
+                                        <div class="absolute inset-0 bg-eco-950/70 rounded-xl opacity-0 group-hover/qr:opacity-100 transition duration-200 flex flex-col items-center justify-center text-white text-xs font-bold gap-1 pointer-events-none">
+                                            <i class="fa-solid fa-magnifying-glass-plus text-2xl animate-bounce"></i>
+                                            <span>CLICK PHÓNG TO QR</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-[11px] font-semibold text-gray-500">BIDV: <span class="font-mono font-bold text-gray-800">8860300056</span></p>
+                                </div>
+                            </div>
+                            <div class="px-6 py-4 bg-eco-100/60 border-t border-eco-200">
+                                <button onclick="zoomQR('Quỹ Từ Thiện Không Khí', 'Loc Khong Khi Cong Cong', 500000, 'Quy Tu Thien Khong Khi')" class="w-full bg-eco-600 hover:bg-eco-700 text-white font-bold py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-expand"></i> Phóng To Mã QR Quyên Góp
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Quỹ 3 -->
+                        <div class="bg-gradient-to-b from-amber-50 to-eco-50 rounded-3xl border-2 border-amber-400 overflow-hidden shadow-md hover:shadow-2xl transition duration-300 flex flex-col justify-between group relative">
+                            <div class="absolute top-3 right-3 bg-amber-500 text-white text-[11px] font-black uppercase px-3 py-1 rounded-full shadow-md">
+                                ★ QUỸ TRỌNG ĐIỂM
+                            </div>
+                            <div class="p-6 sm:p-8">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition duration-300">
+                                        <i class="fa-solid fa-child-reaching"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-extrabold text-gray-900">Quỹ Trẻ Em Cơ Nhỡ</h3>
+                                        <span class="text-xs font-semibold text-amber-900 bg-amber-200 px-3 py-1 rounded-full border border-amber-300">Nâng Đỡ Tương Lai</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                                    Bảo trợ học bổng dài hạn, xây dựng điểm trường mầm non vùng cao và chăm sóc sức khỏe dinh dưỡng cho các em nhỏ mồ côi.
+                                </p>
+                                <div class="bg-amber-100/90 p-3.5 rounded-2xl border border-amber-300 mb-6 text-center">
+                                    <span class="text-xs font-bold text-amber-800 block uppercase">SỐ TIỀN NHẬN ĐƯỢC NỔI BẬT</span>
+                                    <span id="fund-total-3" class="text-2xl sm:text-3xl font-black text-amber-600 tracking-tight">2.150.000.000 VNĐ</span>
+                                    <span class="text-[11px] font-bold text-amber-700 block mt-0.5">(Hơn 2,15 Tỷ Đồng)</span>
+                                </div>
+                                <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-sm flex flex-col items-center">
+                                    <div class="relative cursor-pointer group/qr qr-hover-zoom mb-2" onclick="zoomQR('Quỹ Trẻ Em Cơ Nhỡ', 'Nang Do Tre Em Co Nho', 1000000, 'Quy Tre Em Co Nho')">
+                                        <img src="https://img.vietqr.io/image/970418-8860300056-compact2.png?amount=1000000&addInfo=Quy%20Tre%20Em%20Co%20Nho&accountName=C%C3%94NG%20TY%20TNHH%20QU%E1%BB%B8%20TH%C6%AF%E1%BB%A2NG%20T%C3%82M" alt="QR Quỹ Trẻ Em Cơ Nhỡ" class="w-48 h-48 object-contain rounded-xl border border-gray-200 p-1 bg-white">
+                                        <div class="absolute inset-0 bg-eco-950/70 rounded-xl opacity-0 group-hover/qr:opacity-100 transition duration-200 flex flex-col items-center justify-center text-white text-xs font-bold gap-1 pointer-events-none">
+                                            <i class="fa-solid fa-magnifying-glass-plus text-2xl animate-bounce"></i>
+                                            <span>CLICK PHÓNG TO QR</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-[11px] font-semibold text-gray-500">BIDV: <span class="font-mono font-bold text-gray-800">8860300056</span></p>
+                                </div>
+                            </div>
+                            <div class="px-6 py-4 bg-amber-100/70 border-t border-amber-300">
+                                <button onclick="zoomQR('Quỹ Trẻ Em Cơ Nhỡ', 'Nang Do Tre Em Co Nho', 1000000, 'Quy Tre Em Co Nho')" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-expand"></i> Phóng To Mã QR Quyên Góp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: THƯ VIỆN HÌNH ẢNH & MÓN QUÀ THỰC TẾ -->
+            <section id="thu-vien-anh" class="py-20 bg-eco-100/40 border-t border-eco-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-eco-700 font-bold uppercase tracking-wider text-xs sm:text-sm bg-eco-200 px-4 py-1.5 rounded-full"><i class="fa-solid fa-camera-retro mr-1"></i> Bằng Chứng Sống Thực Tế</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-eco-950 tracking-tight mt-3">Những Món Quà Trao Tận Tay Các Em Nhỏ</h2>
+                        <div class="w-20 h-1.5 bg-eco-500 mx-auto mt-3 rounded-full"></div>
+                        <p class="text-gray-600 mt-4 text-base">
+                            Mỗi bức ảnh dưới đây là một câu chuyện hạnh phúc, nơi những đóng góp của quý vị được hóa thân thành sách vở, áo ấm và tương lai.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Card 1 -->
+                        <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-eco-100 group">
+                            <div class="relative overflow-hidden h-64 bg-gray-200">
+                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80" alt="Trao quà" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1532629345422-7515f3d16bb9?auto=format&fit=crop&w=600&q=80';">
+                                <span class="absolute top-3 left-3 bg-eco-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow z-10">Quỹ Trẻ Em Cơ Nhỡ</span>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="font-extrabold text-lg text-gray-900 mb-2">200 Suất Học Bổng Vùng Cao</h4>
+                                <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                                    Trao tặng trực tiếp cặp sách, dụng cụ học tập và tiền mặt hỗ trợ sinh hoạt cho các em học sinh nghèo tại Khánh Hòa và các tỉnh lân cận.
+                                </p>
+                                <div class="flex justify-between items-center text-xs text-gray-400 border-t pt-3 border-gray-100">
+                                    <span><i class="fa-solid fa-calendar mr-1"></i> Tháng 08/2026</span>
+                                    <span class="text-eco-600 font-bold">Đã giải ngân</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-eco-100 group">
+                            <div class="relative overflow-hidden h-64 bg-gray-200">
+                                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Áo ấm mùa đông" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80';">
+                                <span class="absolute top-3 left-3 bg-eco-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow z-10">Quỹ Áo Ấm Mùa Đông</span>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="font-extrabold text-lg text-gray-900 mb-2">Chương Trình Trao Áo Mới</h4>
+                                <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                                    Chuẩn bị những chiếc áo khoác dày dặn và thực phẩm thiết yếu giúp các em nhỏ giữ ấm cơ thể trong mùa mưa lũ sắp tới.
+                                </p>
+                                <div class="flex justify-between items-center text-xs text-gray-400 border-t pt-3 border-gray-100">
+                                    <span><i class="fa-solid fa-calendar mr-1"></i> Tháng 07/2026</span>
+                                    <span class="text-eco-600 font-bold">Đã giải ngân</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="bg-white rounded-3xl overflow-hidden shadow-md border border-eco-100 group">
+                            <div class="relative overflow-hidden h-64 bg-gray-200">
+                                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Điểm trường" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80';">
+                                <span class="absolute top-3 left-3 bg-amber-500 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow z-10">Xây Dựng Điểm Trường</span>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="font-extrabold text-lg text-gray-900 mb-2">Khánh Thành Lớp Học Vùng Cao</h4>
+                                <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                                    Hoàn thành điểm trường mầm non kiên cố, giúp các em nhỏ không còn phải học dưới những mái nhà tranh tre nứa lá tạm bợ.
+                                </p>
+                                <div class="flex justify-between items-center text-xs text-gray-400 border-t pt-3 border-gray-100">
+                                    <span><i class="fa-solid fa-calendar mr-1"></i> Tháng 06/2026</span>
+                                    <span class="text-eco-600 font-bold">Đã bàn giao</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: BẢNG VÀNG ÂN NHÂN -->
+            <section id="dan-chung" class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-14">
+                        <span class="text-amber-600 font-bold uppercase tracking-wider text-xs sm:text-sm bg-amber-100 px-4 py-1.5 rounded-full"><i class="fa-solid fa-award mr-1"></i> Vinh Danh Tấm Lòng Vàng</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-eco-950 tracking-tight mt-3">Bảng Vàng Ân Nhân Đóng Góp Tiêu Biểu</h2>
+                        <div class="w-20 h-1.5 bg-amber-500 mx-auto mt-3 rounded-full"></div>
+                        <p class="text-gray-600 mt-4 text-base">Danh sách minh bạch số tiền quyên góp từ các doanh nghiệp và nhà hảo tâm lớn gửi về tài khoản BIDV 8860300056.</p>
+                    </div>
+
+                    <div class="bg-eco-50 rounded-3xl shadow-sm border border-eco-100 overflow-hidden">
+                        <div class="p-4 sm:p-6 bg-eco-100/50 border-b border-eco-200 flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <div class="relative w-full sm:w-80">
+                                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400 text-sm"></i>
+                                <input type="text" id="donor-search" oninput="filterDonors()" placeholder="Tìm theo tên, quỹ hoặc mã GD..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-eco-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-eco-500">
+                            </div>
+                            <div class="text-xs text-eco-800 font-semibold bg-white px-3.5 py-2 rounded-xl border border-eco-200 flex items-center gap-2">
+                                <i class="fa-solid fa-clock-rotate-left text-eco-600"></i> Cập nhật ngân hàng BIDV realtime
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-eco-900 text-eco-100 text-xs uppercase font-semibold tracking-wider">
+                                        <th class="py-4 px-6">STT</th>
+                                        <th class="py-4 px-6">Ân Nhân Đóng Góp</th>
+                                        <th class="py-4 px-6">Quỹ Ủng Hộ</th>
+                                        <th class="py-4 px-6 text-right">Số Tiền (VNĐ)</th>
+                                        <th class="py-4 px-6 text-center">Mã Giao Dịch BIDV</th>
+                                        <th class="py-4 px-6 text-center">Trạng Thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="donors-table-body" class="divide-y divide-gray-200 text-sm font-medium text-gray-700 bg-white"></tbody>
+                            </table>
+                        </div>
+
+                        <div class="p-4 bg-gray-50 border-t border-gray-200 text-center">
+                            <button onclick="openDonateSimModal()" class="text-sm font-bold text-eco-700 hover:text-eco-900 transition flex items-center justify-center gap-2 mx-auto">
+                                <i class="fa-solid fa-plus-circle"></i> Đăng Ký Ghi Tên Bạn Vào Bảng Vàng Ngay
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: LIÊN HỆ & HỖ TRỢ -->
+            <section id="lien-he" class="py-20 bg-eco-950 text-white relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-eco-300 font-bold uppercase tracking-wider text-xs sm:text-sm bg-eco-900 border border-eco-700 px-4 py-1.5 rounded-full">Hỗ Trợ 24/7</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3">Thông Tin Liên Hệ & Đường Dây Nóng</h2>
+                        <div class="w-20 h-1.5 bg-eco-500 mx-auto mt-3 rounded-full"></div>
+                        <p class="text-eco-200 mt-4 text-base">Liên hệ trực tiếp với ban quản lý dự án để xác nhận đóng góp hoặc báo cáo các trường hợp cần cứu trợ khẩn cấp.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="bg-eco-900/80 backdrop-blur-md p-8 rounded-3xl border border-eco-800 flex flex-col items-center text-center shadow-xl hover:border-blue-500 transition duration-300">
+                            <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-md">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-white">Chăm Sóc Khách Hàng (Facebook)</h3>
+                            <p class="text-eco-200 text-sm mb-6 leading-relaxed">
+                                Trao đổi, nhận tư vấn thông tin và cập nhật bằng chứng giải ngân qua trang Facebook CSKH chính thức.
+                            </p>
+                            <a href="https://www.facebook.com/share/18XrTZoSsy/" target="_blank" rel="noopener noreferrer" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3.5 rounded-2xl transition duration-200 flex items-center justify-center gap-2 shadow-md w-full text-sm">
+                                <i class="fa-brands fa-facebook"></i> Mở Facebook CSKH Trực Tuyến
+                            </a>
+                        </div>
+
+                        <div class="bg-eco-900/80 backdrop-blur-md p-8 rounded-3xl border border-eco-800 flex flex-col items-center text-center shadow-xl hover:border-red-500 transition duration-300">
+                            <div class="w-16 h-16 bg-red-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-md animate-pulse">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-white">Đường Dây Nóng Khẩn Cấp</h3>
+                            <p class="text-eco-200 text-sm mb-6 leading-relaxed">
+                                Tiếp nhận thông tin trợ giúp khẩn cấp, thiên tai bão lụt và các trường hợp bệnh nhi nghèo cần cứu trợ tức thì.
+                            </p>
+                            <a href="tel:0342929539" class="bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-3.5 rounded-2xl transition duration-200 flex items-center justify-center gap-2 shadow-md w-full text-sm">
+                                <i class="fa-solid fa-phone"></i> LIÊN HỆ KHẨN CẤP: 0342929539
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-black text-eco-300 py-10 border-t border-eco-900 text-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-eco-600 rounded-xl flex items-center justify-center text-white">
+                            <i class="fa-solid fa-seedling text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-base font-bold text-white block">Từ Thiện Vì Cộng Đồng</span>
+                            <p class="text-xs text-eco-500">© 2026 - CÔNG TY TNHH QUỸ THƯƠNG TÂM</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-center gap-6 text-xs sm:text-sm">
+                        <a href="#trang-chu" class="hover:text-white transition">Trang chủ</a>
+                        <a href="#cau-chuyen" class="hover:text-white transition">Câu chuyện</a>
+                        <a href="#dong-gop" class="hover:text-white transition">Các quỹ</a>
+                        <a href="#thu-vien-anh" class="hover:text-white transition">Hình ảnh</a>
+                        <a href="#dan-chung" class="hover:text-white transition">Bảng vàng</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- MODAL AUTHENTICATION -->
+    <div id="auth-modal-overlay" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-md transition-all duration-300">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl border border-eco-100">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 w-9 h-9 bg-gray-100 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 bg-gradient-to-tr from-eco-700 to-eco-500 rounded-2xl flex items-center justify-center text-white mx-auto shadow-md mb-3">
+                    <i class="fa-solid fa-user-shield text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-black text-gray-900">Từ Thiện Vì Cộng Đồng</h3>
+                <p class="text-xs text-eco-700 font-semibold mt-1">Đăng Nhập hoặc Đăng Ký để ghi danh bảng vàng</p>
+            </div>
+            <div class="flex border-b border-gray-200 mb-6 bg-gray-100 p-1 rounded-xl">
+                <button id="tab-login" onclick="switchAuthTab('login')" class="w-1/2 py-2.5 rounded-lg text-center font-bold text-eco-700 bg-white shadow-sm transition">Đăng Nhập</button>
+                <button id="tab-register" onclick="switchAuthTab('register')" class="w-1/2 py-2.5 rounded-lg text-center font-bold text-gray-500 transition">Đăng Ký Mới</button>
+            </div>
+            <form id="form-login" onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nickname *</label>
+                    <input type="text" id="login-nickname" required placeholder="Nhập nickname" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-eco-500 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Mật Khẩu *</label>
+                    <input type="password" id="login-password" required placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-eco-500 text-sm">
+                </div>
+                <button type="submit" class="w-full bg-eco-600 hover:bg-eco-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition text-sm">Đăng Nhập Ngay</button>
+            </form>
+            <form id="form-register" onsubmit="handleRegister(event)" class="space-y-3 hidden">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Họ Và Tên *</label>
+                    <input type="text" id="reg-fullname" required placeholder="Nguyễn Văn A" class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nickname *</label>
+                        <input type="text" id="reg-nickname" required placeholder="nick123" class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Năm Sinh *</label>
+                        <input type="number" id="reg-birthyear" required min="1920" max="2026" placeholder="2000" class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Mật Khẩu (tối thiểu 8 ký tự) *</label>
+                    <input type="password" id="reg-password" required placeholder="••••••••" class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số Điện Thoại (10 số, bắt đầu bằng 0) *</label>
+                    <input type="tel" id="reg-phone" required placeholder="0912345678" class="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm">
+                </div>
+                <button type="submit" class="w-full bg-eco-600 hover:bg-eco-700 text-white font-bold py-3 rounded-xl shadow-lg transition text-sm mt-2">Hoàn Tất Đăng Ký</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL QR ZOOM -->
+    <div id="qr-lightbox" class="fixed inset-0 z-[80] hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-eco-100 text-center">
+            <button onclick="closeQRModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 bg-gray-100 hover:bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <span class="inline-block bg-eco-100 text-eco-800 font-bold px-3.5 py-1 rounded-full text-xs mb-3">
+                <i class="fa-solid fa-qrcode mr-1"></i> Quét Mã VietQR Ngân Hàng BIDV
+            </span>
+            <h3 id="modal-qr-title" class="text-2xl font-black text-gray-900 mb-1">Quỹ Từ Thiện</h3>
+            <p id="modal-qr-sub" class="text-xs text-eco-700 font-bold mb-4">Nội dung chuyển khoản</p>
+            <div class="bg-gradient-to-b from-eco-50 to-white p-4 rounded-2xl border border-eco-200 flex justify-center mb-5 shadow-inner">
+                <img id="modal-qr-img" src="" alt="QR VietQR Super Zoom" class="w-72 h-72 sm:w-80 sm:h-80 object-contain rounded-xl shadow-md bg-white p-2">
+            </div>
+            <div class="bg-gray-50 p-4 rounded-2xl text-left text-xs space-y-2 mb-6 border font-mono">
+                <div class="flex justify-between items-center border-b pb-2">
+                    <span class="text-gray-500">STK:</span>
+                    <strong class="text-eco-700 text-sm font-extrabold">8860300056</strong>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-500">Chủ TK:</span>
+                    <strong class="text-gray-900 font-bold">CÔNG TY TNHH QUỸ THƯƠNG TÂM</strong>
+                </div>
+            </div>
+            <button onclick="closeQRModal()" class="w-full bg-eco-600 hover:bg-eco-700 text-white font-bold py-3.5 rounded-xl text-sm transition">
+                Đóng Cửa Sổ
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL DONATION REGISTRATION -->
+    <div id="donate-sim-modal" class="fixed inset-0 z-[80] hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeDonateSimModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 w-9 h-9 bg-gray-100 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center mb-6">
+                <h3 class="text-xl font-bold text-gray-900">Đăng Ký Đóng Góp Mới</h3>
+                <p class="text-xs text-gray-500 mt-1">Hiển thị công khai trên Bảng Vàng Ân Nhân</p>
+            </div>
+            <form onsubmit="submitDonationSim(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Tên Hiển Thị *</label>
+                    <input type="text" id="sim-name" required placeholder="VD: Anh Minh" class="w-full px-4 py-2.5 rounded-xl border text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Chọn Quỹ *</label>
+                    <select id="sim-fund" class="w-full px-4 py-2.5 rounded-xl border text-sm">
+                        <option value="Quỹ Cây Xanh">Quỹ Từ Thiện Cây Xanh</option>
+                        <option value="Quỹ Không Khí">Quỹ Từ Thiện Không Khí</option>
+                        <option value="Quỹ Trẻ Em Cơ Nhỡ">Quỹ Trẻ Em Cơ Nhỡ</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Số Tiền (VNĐ) *</label>
+                    <input type="number" id="sim-amount" required min="10000" step="10000" placeholder="500000" class="w-full px-4 py-2.5 rounded-xl border text-sm">
+                </div>
+                <button type="submit" class="w-full bg-eco-600 hover:bg-eco-700 text-white font-bold py-3.5 rounded-xl shadow-md text-sm">
+                    Xác Nhận & Ghi Nhận Đóng Góp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+        let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+        const defaultDonors = [
+            { id: 1, name: "Tập đoàn Phát triển Xanh Toàn Cầu", fund: "Quỹ Trẻ Em Cơ Nhỡ", amount: 500000000, code: "BIDV882192", status: "Thành công" },
+            { id: 2, name: "Quỹ Thiện Nguyện An Bình & Partners", fund: "Quỹ Cây Xanh", amount: 500000000, code: "BIDV773210", status: "Thành công" },
+            { id: 3, name: "Công ty Cổ phần Đầu tư Công nghệ VN", fund: "Quỹ Không Khí", amount: 500000000, code: "BIDV991044", status: "Thành công" },
+            { id: 4, name: "Doanh nhân Hoàng Kim Liên", fund: "Quỹ Trẻ Em Cơ Nhỡ", amount: 500000000, code: "BIDV662319", status: "Thành công" },
+            { id: 5, name: "Gia đình ông bà Trần Văn Nam", fund: "Quỹ Cây Xanh", amount: 500000000, code: "BIDV334190", status: "Thành công" }
+        ];
+
+        let donorsList = JSON.parse(localStorage.getItem('donorsList')) || defaultDonors;
+        let notificationsList = JSON.parse(localStorage.getItem('notificationsList')) || [
+            { id: 1, title: "Đóng góp mới thành công", time: "10 phút trước", text: "Xác nhận ủng hộ 500,000,000đ từ Tập đoàn Phát triển Xanh Toàn Cầu.", read: false }
+        ];
+
+        const BASE_FUNDS = {
+            "Quỹ Cây Xanh": 1000000000,
+            "Quỹ Không Khí": 1000000000,
+            "Quỹ Trẻ Em Cơ Nhỡ": 2500000000
+        };
+
+        const authModal = document.getElementById('auth-modal-overlay');
+        const authHeaderContainer = document.getElementById('auth-header-container');
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('donorsList')) localStorage.setItem('donorsList', JSON.stringify(donorsList));
+            if (!localStorage.getItem('notificationsList')) localStorage.setItem('notificationsList', JSON.stringify(notificationsList));
+
+            updateAuthUI();
+            updateFundTotals();
+            renderDonorsTable();
+            renderNotifications();
+            setupScrollSpy();
+            setupBackdropAndKeyEvents();
+        });
+
+        function updateAuthUI() {
+            if (currentUser) {
+                authModal.classList.add('hidden');
+                authHeaderContainer.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <div class="hidden sm:flex items-center space-x-2 bg-eco-100 px-3 py-1.5 rounded-2xl border">
+                            <span class="text-xs font-bold text-eco-900">${currentUser.fullname || currentUser.nickname}</span>
+                        </div>
+                        <button onclick="logoutUser()" class="bg-red-500 hover:bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-xl transition">Đăng Xuất</button>
+                    </div>
+                `;
+            } else {
+                authHeaderContainer.innerHTML = `
+                    <button onclick="openAuthModal('login')" class="bg-eco-600 hover:bg-eco-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-md transition">Đăng Nhập / Đăng Ký</button>
+                `;
+            }
+        }
+
+        function switchAuthTab(tab) {
+            const formLogin = document.getElementById('form-login');
+            const formRegister = document.getElementById('form-register');
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+
+            if (tab === 'login') {
+                formLogin.classList.remove('hidden');
+                formRegister.classList.add('hidden');
+                tabLogin.className = "w-1/2 py-2.5 rounded-lg text-center font-bold text-eco-700 bg-white shadow-sm transition";
+                tabRegister.className = "w-1/2 py-2.5 rounded-lg text-center font-bold text-gray-500 transition";
+            } else {
+                formLogin.classList.add('hidden');
+                formRegister.classList.remove('hidden');
+                tabRegister.className = "w-1/2 py-2.5 rounded-lg text-center font-bold text-eco-700 bg-white shadow-sm transition";
+                tabLogin.className = "w-1/2 py-2.5 rounded-lg text-center font-bold text-gray-500 transition";
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const nickname = document.getElementById('login-nickname').value.trim();
+            const password = document.getElementById('login-password').value;
+            const user = registeredUsers.find(u => u.nickname.toLowerCase() === nickname.toLowerCase());
+
+            if (!user) {
+                showToast('Tài khoản Nickname này chưa được đăng ký!', 'error');
+                return;
+            }
+            if (user.password !== password) {
+                showToast('Mật khẩu không chính xác!', 'error');
+                return;
+            }
+
+            currentUser = { fullname: user.fullname, nickname: user.nickname, phone: user.phone };
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            closeAuthModal();
+            document.getElementById('form-login').reset();
+            updateAuthUI();
+            showToast(`Chào mừng trở lại, ${user.fullname}`, 'success');
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const fullname = document.getElementById('reg-fullname').value.trim();
+            const nickname = document.getElementById('reg-nickname').value.trim();
+            const birthyear = document.getElementById('reg-birthyear').value;
+            const password = document.getElementById('reg-password').value;
+            const phone = document.getElementById('reg-phone').value.trim();
+
+            if (fullname.length < 2 || nickname.length < 3) {
+                showToast("Họ tên hoặc nickname chưa hợp lệ!", "error");
+                return;
+            }
+            if (password.length < 8) {
+                showToast("Mật khẩu phải có ít nhất 8 ký tự!", "error");
+                return;
+            }
+            if (!/^0\d{9}$/.test(phone)) {
+                showToast("Số điện thoại phải gồm 10 chữ số và bắt đầu bằng 0!", "error");
+                return;
+            }
+            const year = Number(birthyear);
+            if (!Number.isInteger(year) || year < 1920 || year > new Date().getFullYear()) {
+                showToast("Năm sinh không hợp lệ!", "error");
+                return;
+            }
+
+            if (registeredUsers.some(u => u.nickname.toLowerCase() === nickname.toLowerCase())) {
+                showToast('Nickname này đã tồn tại!', 'error');
+                return;
+            }
+
+            const newUser = { fullname, nickname, birthyear, password, phone };
+            registeredUsers.push(newUser);
+            localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+            currentUser = { fullname, nickname, phone };
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+            closeAuthModal();
+            document.getElementById('form-register').reset();
+            updateAuthUI();
+            showToast('Đăng ký tài khoản thành công!', 'success');
+        }
+
+        function logoutUser() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            updateAuthUI();
+            showToast('Đã đăng xuất.', 'info');
+        }
+
+        function openAuthModal(tab = 'login') {
+            switchAuthTab(tab);
+            authModal.classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            authModal.classList.add('hidden');
+        }
+
+        function zoomQR(title, fundSub, amount, memo) {
+            const modal = document.getElementById('qr-lightbox');
+            document.getElementById('modal-qr-title').innerText = title;
+            document.getElementById('modal-qr-sub').innerText = `Nội dung: ${memo} | ${Number(amount).toLocaleString('vi-VN')} VNĐ`;
+            document.getElementById('modal-qr-img').src = `https://img.vietqr.io/image/970418-8860300056-compact2.png?amount=${amount}&addInfo=${encodeURIComponent(memo)}&accountName=C%C3%94NG%20TY%20TNHH%20QU%E1%BB%B8%20TH%C6%AF%E1%BB%A2NG%20T%C3%82M`;
+            modal.classList.remove('hidden');
+        }
+
+        function closeQRModal() {
+            document.getElementById('qr-lightbox').classList.add('hidden');
+        }
+
+        // CHỈ TÍNH TIỀN QUỸ KHI TRẠNG THÁI LÀ "Thành công"
+        function updateFundTotals() {
+            const totals = { ...BASE_FUNDS };
+            donorsList.forEach(d => { 
+                if (totals[d.fund] !== undefined && d.status === 'Thành công') { 
+                    totals[d.fund] += Number(d.amount); 
+                } 
+            });
+            document.getElementById('fund-total-1').innerText = totals["Quỹ Cây Xanh"].toLocaleString('vi-VN') + " VNĐ";
+            document.getElementById('fund-total-2').innerText = totals["Quỹ Không Khí"].toLocaleString('vi-VN') + " VNĐ";
+            document.getElementById('fund-total-3').innerText = totals["Quỹ Trẻ Em Cơ Nhỡ"].toLocaleString('vi-VN') + " VNĐ";
+        }
+
+        // AN TOÀN XSS & TÌM KIẾM ĐẦY ĐỦ CẢ MÃ GIAO DỊCH
+        function renderDonorsTable(data = donorsList) {
+            const tbody = document.getElementById('donors-table-body');
+            tbody.innerHTML = '';
+            
+            if (data.length === 0) {
+                const tr = document.createElement('tr');
+                const td = document.createElement('td');
+                td.colSpan = 6;
+                td.className = "py-8 text-center text-gray-400";
+                td.textContent = "Không tìm thấy dữ liệu đóng góp phù hợp.";
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+                return;
+            }
+
+            data.forEach((donor, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-eco-50/50 transition border-b";
+
+                const tdStt = document.createElement('td');
+                tdStt.className = "py-4 px-6 font-bold text-gray-400";
+                tdStt.textContent = index + 1;
+
+                const tdName = document.createElement('td');
+                tdName.className = "py-4 px-6 font-bold text-gray-900";
+                tdName.textContent = donor.name;
+
+                const tdFund = document.createElement('td');
+                tdFund.className = "py-4 px-6";
+                const spanFund = document.createElement('span');
+                spanFund.className = "px-3 py-1 rounded-full text-xs font-semibold bg-eco-100 text-eco-800";
+                spanFund.textContent = donor.fund;
+                tdFund.appendChild(spanFund);
+
+                const tdAmount = document.createElement('td');
+                tdAmount.className = "py-4 px-6 text-right font-black text-eco-700";
+                tdAmount.textContent = "+" + Number(donor.amount).toLocaleString('vi-VN') + " đ";
+
+                const tdCode = document.createElement('td');
+                tdCode.className = "py-4 px-6 text-center font-mono text-xs text-gray-500 font-bold";
+                tdCode.textContent = donor.code;
+
+                const tdStatus = document.createElement('td');
+                tdStatus.className = "py-4 px-6 text-center";
+                const spanStatus = document.createElement('span');
+                spanStatus.className = `text-xs font-bold px-2.5 py-1 rounded-lg ${donor.status === 'Thành công' ? 'text-emerald-600 bg-emerald-50' : 'text-amber-600 bg-amber-50'}`;
+                spanStatus.textContent = donor.status;
+                tdStatus.appendChild(spanStatus);
+
+                tr.append(tdStt, tdName, tdFund, tdAmount, tdCode, tdStatus);
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterDonors() {
+            const query = document.getElementById('donor-search').value.toLowerCase().trim();
+            const filtered = donorsList.filter(d => 
+                d.name.toLowerCase().includes(query) || 
+                d.fund.toLowerCase().includes(query) || 
+                d.code.toLowerCase().includes(query)
+            );
+            renderDonorsTable(filtered);
+        }
+
+        function openDonateSimModal() {
+            if (!currentUser) {
+                openAuthModal('login');
+                showToast('Vui lòng Đăng Nhập để ghi danh Bảng Vàng!', 'info');
+                return;
+            }
+            document.getElementById('sim-name').value = currentUser.fullname || currentUser.nickname;
+            document.getElementById('donate-sim-modal').classList.remove('hidden');
+        }
+
+        function closeDonateSimModal() {
+            document.getElementById('donate-sim-modal').classList.add('hidden');
+        }
+
+        function submitDonationSim(e) {
+            e.preventDefault();
+            const name = document.getElementById('sim-name').value.trim();
+            const fund = document.getElementById('sim-fund').value;
+            const amount = parseFloat(document.getElementById('sim-amount').value);
+
+            const newDonor = {
+                id: Date.now(),
+                name,
+                fund,
+                amount,
+                code: "CHỜ-XÁC-MINH",
+                status: "Chờ xác minh"
+            };
+
+            donorsList.unshift(newDonor);
+            localStorage.setItem('donorsList', JSON.stringify(donorsList));
+
+            updateFundTotals();
+            renderDonorsTable();
+            closeDonateSimModal();
+            showToast('Đã ghi nhận thông tin. Khoản đóng góp cần được xác minh!', 'info');
+        }
+
+        function toggleNotifDrawer() {
+            document.getElementById('notif-drawer').classList.toggle('hidden');
+        }
+
+        function renderNotifications() {
+            const listEl = document.getElementById('notif-list');
+            const badgeEl = document.getElementById('notif-badge');
+            listEl.innerHTML = '';
+
+            const unreadCount = notificationsList.filter(n => !n.read).length;
+            badgeEl.textContent = unreadCount;
+            if (unreadCount === 0) {
+                badgeEl.classList.add('hidden');
+            } else {
+                badgeEl.classList.remove('hidden');
+            }
+
+            if (notificationsList.length === 0) {
+                listEl.innerHTML = '<p class="p-4 text-center text-xs text-gray-400">Không có thông báo nào</p>';
+                return;
+            }
+
+            notificationsList.forEach(n => {
+                const div = document.createElement('div');
+                div.className = `p-3.5 hover:bg-gray-50 transition border-b border-gray-100 ${n.read ? 'opacity-70' : 'bg-eco-50/40 font-semibold'}`;
+                div.innerHTML = `
+                    <div class="flex justify-between items-start mb-1">
+                        <span class="text-xs font-bold text-eco-900">${n.title}</span>
+                        <span class="text-[10px] text-gray-400 font-normal">${n.time}</span>
+                    </div>
+                    <p class="text-xs text-gray-600 leading-snug">${n.text}</p>
+                `;
+                listEl.appendChild(div);
+            });
+        }
+
+        function markAllNotificationsRead() {
+            notificationsList = notificationsList.map(n => ({ ...n, read: true }));
+            localStorage.setItem('notificationsList', JSON.stringify(notificationsList));
+            renderNotifications();
+            showToast('Đã đánh dấu tất cả thông báo là đã đọc.', 'info');
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            let iconClass = 'fa-circle-check text-emerald-500';
+            if (type === 'error') iconClass = 'fa-circle-xmark text-red-500';
+            if (type === 'info') iconClass = 'fa-circle-info text-blue-500';
+
+            toast.className = `flex items-center gap-3 p-4 rounded-2xl shadow-xl border bg-white animate-toast text-xs sm:text-sm font-semibold text-gray-800`;
+            toast.innerHTML = `<i class="fa-solid ${iconClass} text-xl"></i><span>${message}</span>`;
+            
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3500);
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 120;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        function setupBackdropAndKeyEvents() {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeQRModal();
+                    closeDonateSimModal();
+                    closeAuthModal();
+                    document.getElementById('notif-drawer').classList.add('hidden');
+                }
+            });
+
+            document.getElementById('qr-lightbox').addEventListener('click', (e) => {
+                if (e.target.id === 'qr-lightbox') closeQRModal();
+            });
+
+            document.getElementById('donate-sim-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'donate-sim-modal') closeDonateSimModal();
+            });
+
+            document.getElementById('auth-modal-overlay').addEventListener('click', (e) => {
+                if (e.target.id === 'auth-modal-overlay') closeAuthModal();
+            });
+        }
+    </script>
+</body>
+</html>
